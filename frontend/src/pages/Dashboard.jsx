@@ -6,6 +6,12 @@ import AIAssistant from "../components/assistant/AIAssistant";
 import ProfileForm from "../components/profile/ProfileForm";
 import PlanPanel from "../components/plan/PlanPanel";
 
+const howItWorks = [
+  { title: "Add a profile", desc: "Enter the new hire's role, team, and start date." },
+  { title: "Generate a plan", desc: "Get a tailored Monday–Friday first-week plan." },
+  { title: "Ask J.A.R.V.I.S.", desc: "Search 80+ FAQs for instant answers." },
+];
+
 const emptyProfile = {
   name: "",
   role: "",
@@ -70,6 +76,23 @@ export default function Dashboard() {
           Capture the new hire profile, generate a five-day plan, then use the assistant for quick onboarding questions.
         </p>
       </motion.div>
+
+      <div className="mb-8 grid gap-3 sm:grid-cols-3">
+        {howItWorks.map((step, index) => (
+          <div
+            key={step.title}
+            className="flex items-start gap-3 rounded-lg border border-white bg-white/80 p-4 shadow-card"
+          >
+            <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-blue-50 text-sm font-black text-ocean">
+              {index + 1}
+            </span>
+            <div>
+              <p className="font-bold text-ink">{step.title}</p>
+              <p className="text-sm text-slate-500">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
 
       <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <ProfileForm

@@ -43,11 +43,22 @@ export default function ProfileForm({
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm({ defaultValues });
 
   // Start date can only be today or later.
   const today = new Date().toISOString().slice(0, 10);
+
+  // One-click demo profile so users can see a plan without typing everything.
+  const fillSample = () =>
+    reset({
+      name: "Alex Rivera",
+      role: "Software Engineer",
+      team: "Cloud & Infrastructure",
+      startDate: today,
+      skills: "Python, REST APIs, Docker, SQL, CI/CD",
+    });
 
   // Clean up free-text fields at submit time (not per keystroke, so typing
   // spaces still works) before generating the plan.
@@ -73,14 +84,23 @@ export default function ProfileForm({
       transition={{ delay: 0.08 }}
       className="rounded-lg border border-white bg-white p-5 shadow-card sm:p-6"
     >
-      <div className="mb-6 flex items-center gap-3">
-        <span className="grid h-11 w-11 place-items-center rounded-lg bg-blue-50 text-ocean">
-          <UserRound size={22} />
-        </span>
-        <div>
-          <h2 className="text-xl font-black text-ink">User Profile</h2>
-          <p className="text-sm text-slate-500">Details used to tailor the onboarding plan.</p>
+      <div className="mb-6 flex items-center justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <span className="grid h-11 w-11 place-items-center rounded-lg bg-blue-50 text-ocean">
+            <UserRound size={22} />
+          </span>
+          <div>
+            <h2 className="text-xl font-black text-ink">User Profile</h2>
+            <p className="text-sm text-slate-500">Details used to tailor the onboarding plan.</p>
+          </div>
         </div>
+        <button
+          type="button"
+          onClick={fillSample}
+          className="shrink-0 rounded-lg border border-slate-200 px-3 py-2 text-sm font-semibold text-ocean transition hover:border-ocean hover:bg-blue-50"
+        >
+          Try a sample
+        </button>
       </div>
 
       <form className="space-y-4" onSubmit={handleSubmit(handleGenerate)}>
