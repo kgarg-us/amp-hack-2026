@@ -34,8 +34,31 @@ export async function askQuestion(question) {
   };
 }
 
+// Default suggestion chips: pull real questions from the backend FAQ (one per
+// category to stay compact), falling back to the mock list if the API is down.
 export async function getFAQs() {
-  return Promise.resolve(faqs);
+  try {
+    const response = await apiClient.get("/api/faq");
+    const categories = response.data.categories || [];
+    const questions = categories
+      .map((category) => category.items?.[0]?.question)
+      .filter(Boolean);
+    return questions.length > 0 ? questions : faqs;
+  } catch {
+    return faqs;
+  }
+}
+
+// Semantic search over the FAQ: returns ranked hits
+// [{ id, category, question, answer, score }]. Understands meaning/synonyms,
+// not just keywords. Returns [] on any failure so the UI can fall back quietly.
+export async function searchFAQs(query, limit = 5) {
+  try {
+    const response = await apiClient.post("/api/search", { query, limit });
+    return response.data.hits || [];
+  } catch {
+    return [];
+  }
 }
 
 function buildPlanPrompt(profile) {
