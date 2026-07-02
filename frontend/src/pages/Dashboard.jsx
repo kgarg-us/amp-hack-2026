@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { generatePlan } from "../services/api";
+import { onboardingPlan } from "../data/mockData";
 import AIAssistant from "../components/assistant/AIAssistant";
 import ProfileForm from "../components/profile/ProfileForm";
 import PlanPanel from "../components/plan/PlanPanel";
@@ -19,6 +20,7 @@ export default function Dashboard() {
   const [plan, setPlan] = useState([]);
   const [isGenerating, setIsGenerating] = useState(false);
   const [generationError, setGenerationError] = useState("");
+  const [usedFallback, setUsedFallback] = useState(false);
 
   const profileChanged = useMemo(() => {
     if (!generatedProfile) return false;
@@ -26,7 +28,7 @@ export default function Dashboard() {
   }, [generatedProfile, profile]);
 
   useEffect(() => {
-    document.title = "Dashboard | OnboardAI";
+    document.title = "Dashboard | J.A.R.V.I.S.";
   }, []);
 
   const handleGenerate = useCallback(async (values) => {
@@ -38,12 +40,14 @@ export default function Dashboard() {
       setProfile(values);
       setGeneratedProfile(values);
       setPlan(response.plan);
-    } catch (error) {
-      setGenerationError(
-        error.response?.data?.detail ||
-          error.message ||
-          "Unable to generate the onboarding plan. Please check the backend and try again."
-      );
+      setUsedFallback(false);
+    } catch {
+      // Live AI is unavailable (e.g. no API credits) — show a sample plan so
+      // the product stays usable and demoable instead of erroring out.
+      setProfile(values);
+      setGeneratedProfile(values);
+      setPlan(onboardingPlan);
+      setUsedFallback(true);
     } finally {
       setIsGenerating(false);
     }
@@ -83,10 +87,15 @@ export default function Dashboard() {
             profile={generatedProfile}
             isGenerating={isGenerating}
             error={generationError}
+            notice={
+              usedFallback
+                ? "Live AI generation is unavailable right now — showing a sample first-week plan you can still customize."
+                : ""
+            }
             profileChanged={profileChanged}
             onRegenerate={() => handleGenerate(profile)}
           />
-          {plan.length > 0 ? <AIAssistant /> : null}
+          <AIAssistant />
         </section>
       </div>
     </main>
