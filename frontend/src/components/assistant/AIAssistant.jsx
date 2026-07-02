@@ -18,6 +18,7 @@ export default function AIAssistant() {
   const [input, setInput] = useState("");
   const [isReplying, setIsReplying] = useState(false);
   const [error, setError] = useState("");
+  const [related, setRelated] = useState([]);
   const chatEndRef = useRef(null);
 
   // Load the 50 FAQs once, then search them entirely on the client (no LLM).
@@ -44,8 +45,14 @@ export default function AIAssistant() {
     return rankFAQs(input, allFaqs, 5).map((item) => item.question);
   }, [input, allFaqs]);
 
-  // Show local matches while typing, otherwise the default suggestion chips.
-  const chips = suggestions.length > 0 ? suggestions : defaultChips;
+  // While typing → live matches; after an answer → related questions;
+  // otherwise → the default suggestion chips.
+  const chips =
+    suggestions.length > 0
+      ? suggestions
+      : related.length > 0
+        ? related
+        : defaultChips;
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -63,11 +70,18 @@ export default function AIAssistant() {
     setError("");
     setIsReplying(true);
 
-    // Answer from the 50 FAQs via local search — no LLM/network call.
-    const matches = rankFAQs(clean, allFaqs, 1);
-    const answerText = matches.length
-      ? matches[0].answer
+    // Answer from the FAQ via local search — no LLM/network call.
+    const ranked = rankFAQs(clean, allFaqs, 5);
+    const answerText = ranked.length
+      ? ranked[0].answer
       : "I couldn't find that in the FAQ. Try rephrasing, or pick one of the suggested questions above.";
+
+    // Surface a few related questions so the user can keep exploring the topic.
+    setRelated(
+      ranked
+        .slice(1, 5)
+        .map((item) => item.question)
+    );
 
     setTimeout(() => {
       setMessages((current) => [
@@ -99,7 +113,7 @@ export default function AIAssistant() {
         </div>
       </div>
 
-      {suggestions.length > 0 ? (
+      {suggestions.length > 0 || related.length > 0 ? (
         <p className="mb-2 text-xs font-bold uppercase tracking-wide text-slate-400">
           Related questions
         </p>
