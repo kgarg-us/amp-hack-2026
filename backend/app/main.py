@@ -76,7 +76,21 @@ def list_faq(settings: Settings = Depends(get_settings)) -> FaqResponse:
     return FaqResponse(categories=group_by_category(items), total=len(items))
 
 
-@app.post("/api/generate", response_model=PromptResponse, tags=["openai"])
+@app.post("/api/generate", 
+    response_model=PromptResponse, 
+    tags=["openai"],
+    summary="Generate a summarized FAQ-grounded response",
+    description=(
+        "Accepts a user question in the `prompt` field, retrieves relevant "
+        "entries from the current FAQ document, and uses those entries as "
+        "context for the language model response. Internally, the backend "
+        "loads the FAQ source content, vectorizes it with the configured "
+        "embedding model, performs semantic search against the user's "
+        "question, adds the matching FAQ context to the system prompt, and "
+        "asks the configured generation model to return a concise summarized "
+        "answer. The response includes the generated text plus the FAQ source "
+        "IDs used as context."
+    ))
 def generate(
     request: PromptRequest,
     settings: Settings = Depends(get_settings),
