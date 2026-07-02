@@ -16,6 +16,7 @@ export default function AIAssistant() {
   const [faqs, setFaqs] = useState([]);
   const [input, setInput] = useState("");
   const [isReplying, setIsReplying] = useState(false);
+  const [error, setError] = useState("");
   const chatEndRef = useRef(null);
 
   useEffect(() => {
@@ -39,18 +40,28 @@ export default function AIAssistant() {
     setMessages((current) => [...current, userMessage]);
     setInput("");
     setIsReplying(true);
+    setError("");
 
-    const response = await askQuestion(trimmed);
+    try {
+      const response = await askQuestion(trimmed);
 
-    setMessages((current) => [
-      ...current,
-      {
-        id: crypto.randomUUID(),
-        role: "assistant",
-        text: response.answer,
-      },
-    ]);
-    setIsReplying(false);
+      setMessages((current) => [
+        ...current,
+        {
+          id: crypto.randomUUID(),
+          role: "assistant",
+          text: response.answer,
+        },
+      ]);
+    } catch (requestError) {
+      setError(
+        requestError.response?.data?.detail ||
+          requestError.message ||
+          "Unable to get an answer from the backend."
+      );
+    } finally {
+      setIsReplying(false);
+    }
   }
 
   function handleSubmit(event) {
@@ -70,7 +81,7 @@ export default function AIAssistant() {
         </span>
         <div>
           <h2 className="text-xl font-black text-ink">AI Assistant</h2>
-          <p className="text-sm text-slate-500">Mock chat for common onboarding questions.</p>
+          <p className="text-sm text-slate-500">Connected to the backend AI endpoint.</p>
         </div>
       </div>
 
@@ -119,6 +130,7 @@ export default function AIAssistant() {
           {isReplying ? <Loader2 className="animate-spin" size={18} /> : <Send size={18} />}
         </button>
       </form>
+      {error ? <p className="mt-3 text-sm font-semibold text-red-600">{error}</p> : null}
     </motion.section>
   );
 }

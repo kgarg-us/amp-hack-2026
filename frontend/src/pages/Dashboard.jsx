@@ -18,6 +18,7 @@ export default function Dashboard() {
   const [generatedProfile, setGeneratedProfile] = useState(null);
   const [plan, setPlan] = useState([]);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [generationError, setGenerationError] = useState("");
 
   const profileChanged = useMemo(() => {
     if (!generatedProfile) return false;
@@ -30,11 +31,22 @@ export default function Dashboard() {
 
   const handleGenerate = useCallback(async (values) => {
     setIsGenerating(true);
-    const response = await generatePlan(values);
-    setProfile(values);
-    setGeneratedProfile(values);
-    setPlan(response.plan);
-    setIsGenerating(false);
+    setGenerationError("");
+
+    try {
+      const response = await generatePlan(values);
+      setProfile(values);
+      setGeneratedProfile(values);
+      setPlan(response.plan);
+    } catch (error) {
+      setGenerationError(
+        error.response?.data?.detail ||
+          error.message ||
+          "Unable to generate the onboarding plan. Please check the backend and try again."
+      );
+    } finally {
+      setIsGenerating(false);
+    }
   }, []);
 
   const handleProfileChange = useCallback((values) => {
@@ -70,6 +82,7 @@ export default function Dashboard() {
             plan={plan}
             profile={generatedProfile}
             isGenerating={isGenerating}
+            error={generationError}
             profileChanged={profileChanged}
             onRegenerate={() => handleGenerate(profile)}
           />

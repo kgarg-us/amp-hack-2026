@@ -2,7 +2,7 @@ import { Loader2, RefreshCw, WandSparkles } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import DayCard from "./DayCard";
 
-export default function PlanPanel({ plan, profile, isGenerating, profileChanged, onRegenerate }) {
+export default function PlanPanel({ plan, profile, isGenerating, error, profileChanged, onRegenerate }) {
   return (
     <motion.section
       initial={{ opacity: 0, y: 12 }}
@@ -34,6 +34,12 @@ export default function PlanPanel({ plan, profile, isGenerating, profileChanged,
       {profileChanged ? (
         <div className="mb-5 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-800">
           Profile updated. Regenerate plan.
+        </div>
+      ) : null}
+
+      {error ? (
+        <div className="mb-5 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">
+          {error}
         </div>
       ) : null}
 
