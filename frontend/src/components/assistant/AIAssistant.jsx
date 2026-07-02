@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Bot, Loader2, Send, UserRound } from "lucide-react";
 import { motion } from "framer-motion";
-import { askQuestion, getFAQs, searchFAQs } from "../../services/api";
+import { getAllFAQs, rankFAQs } from "../../services/api";
+import { normalizeWhitespace } from "../../utils/text";
 
 const initialMessages = [
   {
@@ -13,77 +14,68 @@ const initialMessages = [
 
 export default function AIAssistant() {
   const [messages, setMessages] = useState(initialMessages);
-  const [faqs, setFaqs] = useState([]);
-  const [suggestions, setSuggestions] = useState([]);
+  const [allFaqs, setAllFaqs] = useState([]);
   const [input, setInput] = useState("");
   const [isReplying, setIsReplying] = useState(false);
   const [error, setError] = useState("");
   const chatEndRef = useRef(null);
 
+  // Load the 50 FAQs once, then search them entirely on the client (no LLM).
   useEffect(() => {
-    getFAQs().then(setFaqs);
+    getAllFAQs().then(setAllFaqs);
   }, []);
 
-  // Semantic search: as the user types, surface related FAQ questions (by
-  // meaning, not keywords). Debounced; falls back silently to the default chips.
-  useEffect(() => {
-    const trimmed = input.trim();
-    if (trimmed.length < 2) {
-      setSuggestions([]);
-      return;
+  // Default chips: one question per category as a compact starting point.
+  const defaultChips = useMemo(() => {
+    const seen = new Set();
+    const picks = [];
+    for (const item of allFaqs) {
+      if (!seen.has(item.category)) {
+        seen.add(item.category);
+        picks.push(item.question);
+      }
     }
+    return picks;
+  }, [allFaqs]);
 
-    const timer = setTimeout(() => {
-      searchFAQs(trimmed, 5).then((hits) =>
-        setSuggestions(hits.map((hit) => hit.question))
-      );
-    }, 250);
+  // Live, local search over the FAQ as the user types.
+  const suggestions = useMemo(() => {
+    if (normalizeWhitespace(input).length < 2) return [];
+    return rankFAQs(input, allFaqs, 5).map((item) => item.question);
+  }, [input, allFaqs]);
 
-    return () => clearTimeout(timer);
-  }, [input]);
-
-  // Show semantic matches while typing, otherwise the default suggestion chips.
-  const chips = suggestions.length > 0 ? suggestions : faqs;
+  // Show local matches while typing, otherwise the default suggestion chips.
+  const chips = suggestions.length > 0 ? suggestions : defaultChips;
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isReplying]);
 
-  async function sendQuestion(question) {
-    const trimmed = question.trim();
-    if (!trimmed || isReplying) return;
+  function sendQuestion(question) {
+    const clean = normalizeWhitespace(question);
+    if (!clean || isReplying) return;
 
-    const userMessage = {
-      id: crypto.randomUUID(),
-      role: "user",
-      text: trimmed,
-    };
-
-    setMessages((current) => [...current, userMessage]);
+    setMessages((current) => [
+      ...current,
+      { id: crypto.randomUUID(), role: "user", text: clean },
+    ]);
     setInput("");
-    setIsReplying(true);
     setError("");
+    setIsReplying(true);
 
-    try {
-      const response = await askQuestion(trimmed);
+    // Answer from the 50 FAQs via local search — no LLM/network call.
+    const matches = rankFAQs(clean, allFaqs, 1);
+    const answerText = matches.length
+      ? matches[0].answer
+      : "I couldn't find that in the FAQ. Try rephrasing, or pick one of the suggested questions above.";
 
+    setTimeout(() => {
       setMessages((current) => [
         ...current,
-        {
-          id: crypto.randomUUID(),
-          role: "assistant",
-          text: response.answer,
-        },
+        { id: crypto.randomUUID(), role: "assistant", text: answerText },
       ]);
-    } catch (requestError) {
-      setError(
-        requestError.response?.data?.detail ||
-          requestError.message ||
-          "Unable to get an answer from the backend."
-      );
-    } finally {
       setIsReplying(false);
-    }
+    }, 200);
   }
 
   function handleSubmit(event) {
@@ -102,8 +94,8 @@ export default function AIAssistant() {
           <Bot size={22} />
         </span>
         <div>
-          <h2 className="text-xl font-black text-ink">AI Assistant</h2>
-          <p className="text-sm text-slate-500">Connected to the backend AI endpoint.</p>
+          <h2 className="text-xl font-black text-ink">FAQ Assistant</h2>
+          <p className="text-sm text-slate-500">Instant answers from the New-Hire FAQ.</p>
         </div>
       </div>
 
