@@ -15,7 +15,10 @@ class Settings(BaseSettings):
     faq_pdf_path: Path = BACKEND_ROOT / "New_Hire_FAQ_Questions.pdf"
     faq_data_path: Path = BACKEND_ROOT / "faq_data.json"
 
-    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
+    model_config = SettingsConfigDict(
+        env_file=BACKEND_ROOT / ".env",
+        env_file_encoding="utf-8",
+    )
 
 
 @lru_cache
