@@ -5,6 +5,7 @@ Full-stack starter with:
 - `frontend/`: React + Node.js using Next.js for server-side rendering.
 - `backend/`: Python FastAPI API with automatic OpenAPI and Swagger docs.
 - OpenAI integration on the backend using a pre-configured model from environment variables.
+- New-hire onboarding assistant: `/api/generate` grounds every answer in `backend/New_Hire_FAQ_Questions.pdf` (parsed once and cached) and returns a concise, summarized response — including structured first-week plans when asked (e.g. "generate a first-week plan for Alex, a Backend Engineer").
 
 ## Project Structure
 
