@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, MessageSquareText, Sparkles } from "lucide-react";
-import ampcusLogo from "../assets/ampcus-logo.webp";
 
 const highlights = [
   "Personalized first-week plans",
-  "Instant answers to 50+ FAQs",
+  "Instant answers to 80+ FAQs",
   "Ask in your own words",
 ];
 
@@ -18,7 +17,6 @@ export default function Home() {
         transition={{ duration: 0.45 }}
         className="flex flex-col justify-center"
       >
-        <img src={ampcusLogo} alt="Ampcus" className="mb-6 h-8 w-auto" />
         <span className="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-ocean shadow-card">
           <Sparkles size={16} />
           J.A.R.V.I.S. · AI Onboarding Companion
@@ -27,7 +25,9 @@ export default function Home() {
           Help every new teammate feel ready before week two.
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-          J.A.R.V.I.S. — the Joining Assistant for Roles, Verification, Information, &amp; Scheduling — turns a new hire profile into a focused first-week plan and answers common onboarding questions instantly.
+          J.A.R.V.I.S. is your Joining Assistant for Roles, Verification,
+          Information, and Scheduling. It turns a new-hire profile into a focused
+          first-week plan and answers common onboarding questions instantly.
         </p>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">

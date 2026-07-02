@@ -20,8 +20,8 @@ export default function Faq() {
           New-hire questions, answered
         </h1>
         <p className="mt-3 text-slate-600">
-          Search the 50 most common onboarding questions or tap a suggestion.
-          Answers are instant — no profile or sign-in needed.
+          Search the full new-hire FAQ — general onboarding plus role-specific
+          questions — or tap a suggestion. Answers are instant, no sign-in needed.
         </p>
       </motion.div>
 
