@@ -1,0 +1,494 @@
+{
+  "meta": {
+    "title": "New Hire FAQ",
+    "version": "1.0",
+    "generated": "2026-07-02",
+    "totalQuestions": 80
+  },
+  "commonSections": [
+    {
+      "id": "onboarding-first-days",
+      "title": "Onboarding & First Days",
+      "type": "common",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What should I do on my first day?",
+          "answer": "Check in with your manager to confirm your day-one schedule. Expect to set up your laptop, complete mandatory compliance training, get an office (or virtual) tour, and meet your immediate team. Your onboarding buddy will reach out to schedule a welcome conversation."
+        },
+        {
+          "id": 2,
+          "question": "How long is the formal onboarding period?",
+          "answer": "The structured onboarding period is 30 days, with check-ins at day 15 and day 30. Your manager will co-create 30-60-90 day goals with you during your first week so you have a clear ramp-up plan."
+        },
+        {
+          "id": 3,
+          "question": "Who is my onboarding buddy and what do they do?",
+          "answer": "Your onboarding buddy is a peer assigned to help you navigate the culture, processes, and unwritten norms of the company. They are your go-to for informal questions. Their name is included in your welcome email."
+        },
+        {
+          "id": 4,
+          "question": "What training is required in my first 30 days?",
+          "answer": "Required training typically includes security awareness, code of conduct, anti-harassment, and any role-specific compliance modules. All are assigned automatically in the learning management system (LMS) on day one."
+        },
+        {
+          "id": 5,
+          "question": "What should I read before my first week ends?",
+          "answer": "Prioritize your team's charter or mission document, the employee handbook, the onboarding checklist, and any product or service overviews relevant to your role. Ask your manager for a curated reading list in your first 1:1."
+        }
+      ]
+    },
+    {
+      "id": "your-first-90-days",
+      "title": "Your First 90 Days",
+      "type": "common",
+      "questions": [
+        {
+          "id": 6,
+          "question": "What does success look like at the end of my first 90 days?",
+          "answer": "Ask your manager to define three to five concrete outcomes during your first 1:1. Common markers include completing onboarding training, building key relationships, understanding team priorities, and delivering one tangible contribution."
+        },
+        {
+          "id": 7,
+          "question": "Should I contribute immediately or observe at first?",
+          "answer": "The first two weeks are primarily for listening, learning, and relationship-building. Expect to ramp into active contribution by week three or four. Resist proposing changes before you understand the context."
+        },
+        {
+          "id": 8,
+          "question": "Is it okay to ask a lot of questions as a new hire?",
+          "answer": "Yes. Asking questions is expected and encouraged in the first 90 days. A good rule: try to find the answer yourself first, then ask if you are still stuck. Thoughtful questions signal engagement, not unpreparedness."
+        },
+        {
+          "id": 9,
+          "question": "What mistakes do new hires most commonly make?",
+          "answer": "The most common pitfalls are trying to change things before understanding them, staying heads-down instead of building relationships, missing deadlines due to unclear scope, and not asking for help when stuck."
+        },
+        {
+          "id": 10,
+          "question": "Should I schedule 1:1s with people outside my team?",
+          "answer": "Yes. Cross-functional relationship building is one of the highest-value activities in your first 30 days. Ask your manager for a short list of five to ten people you should meet, and keep meetings to 20-30 minutes."
+        }
+      ]
+    },
+    {
+      "id": "hr-benefits-payroll",
+      "title": "HR, Benefits & Payroll",
+      "type": "common",
+      "questions": [
+        {
+          "id": 11,
+          "question": "When do I receive my benefits enrollment link?",
+          "answer": "Benefits enrollment is sent to your email on your first day. You have 30 days from your start date to make elections. After that window, changes are only possible during open enrollment or after a qualifying life event."
+        },
+        {
+          "id": 12,
+          "question": "Does the company offer a 401(k) or retirement plan?",
+          "answer": "Yes. Employees are eligible to contribute from day one. The company matches a defined percentage of your contribution — check the benefits summary for the exact match formula and vesting schedule."
+        },
+        {
+          "id": 13,
+          "question": "How much PTO do I start with, and when can I use it?",
+          "answer": "Full-time employees accrue PTO from day one, with accrual rates varying by level. There is generally no waiting period, but confirm with your manager before scheduling time off in your first 30 days."
+        },
+        {
+          "id": 14,
+          "question": "When will I receive my first paycheck?",
+          "answer": "Payroll runs on a fixed cycle (bi-weekly or semi-monthly). Your first check date depends on where your start date falls in the cycle — a payroll calendar is included in your onboarding materials."
+        },
+        {
+          "id": 15,
+          "question": "How do I set up direct deposit?",
+          "answer": "Log into the payroll portal on day one and navigate to Payroll > Direct Deposit. Enter your bank routing and account numbers. Changes take one full pay cycle, so your first payment may arrive as a paper check."
+        }
+      ]
+    },
+    {
+      "id": "tools-access-it",
+      "title": "Tools, Access & IT",
+      "type": "common",
+      "questions": [
+        {
+          "id": 16,
+          "question": "How do I set up my laptop on day one?",
+          "answer": "IT sends a setup guide before your start date. Follow the steps to enroll your device in device management, connect to corporate Wi-Fi or VPN, and install required applications. The IT helpdesk is available if you get stuck."
+        },
+        {
+          "id": 17,
+          "question": "Which communication tools does the company use?",
+          "answer": "Slack (or Teams) is the primary internal messaging platform. Email is used for formal or external correspondence, and video meetings run on Zoom or Teams. Your IT setup guide covers configuration for each."
+        },
+        {
+          "id": 18,
+          "question": "How do I request access to a system I need?",
+          "answer": "Submit an access request through the IT helpdesk portal, including the system name, business justification, and your manager's name for approval. Standard requests are typically fulfilled within one business day."
+        },
+        {
+          "id": 19,
+          "question": "What do I do if my laptop breaks or is lost?",
+          "answer": "Report the issue immediately to the IT helpdesk. For a lost or stolen device, also notify your manager and IT security so the device can be remotely wiped. A loaner or replacement will be arranged."
+        },
+        {
+          "id": 20,
+          "question": "How do I get expenses reimbursed?",
+          "answer": "Business expenses require manager pre-approval and must be submitted through the expense tool within 30 days, with receipts attached for anything over the stated threshold. The full policy is in the HR portal."
+        }
+      ]
+    },
+    {
+      "id": "working-with-your-manager-team",
+      "title": "Working With Your Manager & Team",
+      "type": "common",
+      "questions": [
+        {
+          "id": 21,
+          "question": "How often will I meet with my manager one-on-one?",
+          "answer": "Most managers hold weekly or bi-weekly 1:1s with direct reports. If one is not set up by the end of your first week, ask your manager to establish a recurring slot. This is your primary space for feedback and priorities."
+        },
+        {
+          "id": 22,
+          "question": "What should I own versus escalate to my manager?",
+          "answer": "Clarify this explicitly in your first few weeks. A useful question: \"What decisions do you want me to make independently, and when should I loop you in?\" Most managers prefer to be informed of surprises, not routine decisions."
+        },
+        {
+          "id": 23,
+          "question": "How do I ask for help without seeming incompetent?",
+          "answer": "Frame requests around what you have already tried: \"I've looked at X and Y but I'm stuck on Z — do you have five minutes to help me think it through?\" This shows initiative and makes it easy for others to help efficiently."
+        },
+        {
+          "id": 24,
+          "question": "What if I disagree with my manager's direction?",
+          "answer": "Share your perspective once, clearly and with supporting reasoning. If the decision stands, commit to executing it. If a recurring issue has serious consequences, escalate through your skip-level manager or HR."
+        },
+        {
+          "id": 25,
+          "question": "What is the fastest way to earn trust with teammates?",
+          "answer": "Do what you say you will do, meet deadlines, and acknowledge when you do not know something. Reliability is the fastest path to trust, and offering to help a teammate with something small in week one goes a long way."
+        }
+      ]
+    },
+    {
+      "id": "policies-growth-wellbeing",
+      "title": "Policies, Growth & Wellbeing",
+      "type": "common",
+      "questions": [
+        {
+          "id": 26,
+          "question": "Where can I find the employee handbook?",
+          "answer": "The handbook is available in the HR portal under Policy Documents, and a link is included in your welcome email. Sign the acknowledgment that you have read it within your first week."
+        },
+        {
+          "id": 27,
+          "question": "What is the remote or hybrid work policy?",
+          "answer": "Work arrangements vary by team and role, and your offer letter specifies yours. Discuss the practical norms — core hours, in-office days, and camera expectations — with your manager during your first 1:1."
+        },
+        {
+          "id": 28,
+          "question": "What is the policy on using AI tools at work?",
+          "answer": "Most companies maintain an acceptable use policy for AI tools. Typical rules: do not input confidential or proprietary data, review AI-generated content before use, and use only approved platforms. Check the IT and security section of the handbook."
+        },
+        {
+          "id": 29,
+          "question": "How does the performance review process work?",
+          "answer": "Reviews are typically held twice a year and include self-assessment, manager evaluation, and sometimes peer feedback. Your manager will explain the framework and timeline in your first 1:1."
+        },
+        {
+          "id": 30,
+          "question": "What should I do if I feel overwhelmed in my first weeks?",
+          "answer": "This is extremely common. Talk to your manager early — most would rather adjust your ramp-up than have you quietly struggle. An Employee Assistance Program (EAP) is also available for confidential support. Do not wait for burnout to set in."
+        }
+      ]
+    }
+  ],
+  "roleSections": [
+    {
+      "id": "ai-developer",
+      "role": "AI Developer",
+      "title": "Role-Specific: AI Development",
+      "type": "role",
+      "questions": [
+        {
+          "id": 31,
+          "question": "Which AI/ML platforms and model providers does the company use?",
+          "answer": "Confirm whether the stack is built on AWS Bedrock, Azure OpenAI, Google Vertex AI, or direct API access to providers like Anthropic and OpenAI. Ask for the approved model list and how new models get evaluated and onboarded."
+        },
+        {
+          "id": 32,
+          "question": "What is the policy on sending data to LLM APIs?",
+          "answer": "This is critical to learn before writing any code. Ask which data classifications may be sent to which endpoints, whether zero-data-retention agreements are in place, and what anonymization or redaction is required for customer or proprietary data."
+        },
+        {
+          "id": 33,
+          "question": "What frameworks and tooling does the team use for AI applications?",
+          "answer": "Ask whether the team builds with LangChain, LangGraph, CrewAI, LlamaIndex, or direct SDK calls, and what the conventions are for prompt management, versioning, and testing. Understand the RAG architecture if retrieval is in use."
+        },
+        {
+          "id": 34,
+          "question": "How are prompts and model configurations managed and versioned?",
+          "answer": "Prompts are code. Ask whether prompts live in a registry, config files, or a prompt management tool, how changes are reviewed, and how A/B testing or regression evaluation is performed when prompts change."
+        },
+        {
+          "id": 35,
+          "question": "How does the team evaluate model outputs and quality?",
+          "answer": "Ask what the evaluation strategy looks like: golden datasets, LLM-as-judge scoring, human review loops, or automated metrics. Understand what quality bar must be met before a change ships to production."
+        },
+        {
+          "id": 36,
+          "question": "What guardrails and safety controls are required for AI features?",
+          "answer": "Learn the requirements for input validation, output filtering, jailbreak resistance, hallucination mitigation, and human-in-the-loop checkpoints. Ask whether a responsible AI review board must approve new AI features."
+        },
+        {
+          "id": 37,
+          "question": "How is AI infrastructure deployed and scaled?",
+          "answer": "Confirm whether inference runs on managed endpoints, Kubernetes (with GPU node pools), or serverless. Ask about latency and cost targets, token budgets, caching strategies, and how usage is monitored per feature."
+        },
+        {
+          "id": 38,
+          "question": "What MLOps or LLMOps practices are in place?",
+          "answer": "Ask about experiment tracking (MLflow, Weights & Biases), model registries, observability for LLM calls (Langfuse, LangSmith, custom logging), and how incidents involving model behavior are triaged."
+        },
+        {
+          "id": 39,
+          "question": "What are the current AI projects and where can I contribute first?",
+          "answer": "Get the AI roadmap and identify a well-scoped first contribution — improving an evaluation suite, adding observability, or hardening an existing agent is often a better starter than building a new feature from scratch."
+        },
+        {
+          "id": 40,
+          "question": "How does the company handle AI-related intellectual property and licensing?",
+          "answer": "Ask about the policy for using open-weight models (license compliance), whether AI-generated code and content can be shipped, and how training data provenance and copyright questions are handled."
+        }
+      ]
+    },
+    {
+      "id": "cloud-engineer",
+      "role": "Cloud Engineer",
+      "title": "Role-Specific: Cloud Engineering",
+      "type": "role",
+      "questions": [
+        {
+          "id": 41,
+          "question": "Which cloud provider(s) does the company use, and how are accounts structured?",
+          "answer": "Confirm the primary provider (AWS, Azure, or GCP) and the account/subscription strategy: how dev, staging, and production are separated, and how the organization is structured with guardrails and policies."
+        },
+        {
+          "id": 42,
+          "question": "How do I get access to the cloud console and CLI credentials?",
+          "answer": "Cloud access is typically provisioned through SSO federation with role-based access. Submit a request through the access workflow specifying the accounts and permission sets you need, with your manager's approval."
+        },
+        {
+          "id": 43,
+          "question": "What Infrastructure as Code tooling does the team use?",
+          "answer": "Most teams standardize on Terraform, CloudFormation, or Pulumi. Ask where the IaC repositories live, how state is managed, and what the module structure and naming conventions are."
+        },
+        {
+          "id": 44,
+          "question": "What is the process for making infrastructure changes?",
+          "answer": "Infrastructure changes usually follow a pull-request workflow: plan output reviewed by peers, approval gates for production, and automated apply through CI/CD. Ask for the change management runbook and who approves production changes."
+        },
+        {
+          "id": 45,
+          "question": "What container orchestration platform is in use, and how do I get cluster access?",
+          "answer": "Confirm whether the company runs EKS, AKS, GKE, or OpenShift. Cluster access is typically managed through IAM integration with RBAC roles — request the kubeconfig onboarding steps and confirm which namespaces your role permits."
+        },
+        {
+          "id": 46,
+          "question": "How does the team handle secrets management?",
+          "answer": "Confirm whether the standard is a cloud-native secrets service, HashiCorp Vault, or parameter stores. Never hardcode credentials; ask for the rotation policy and approved access patterns."
+        },
+        {
+          "id": 47,
+          "question": "What monitoring and alerting stack is in place?",
+          "answer": "Ask which tools cover metrics, logs, and traces — CloudWatch, Prometheus/Grafana, Datadog, or Splunk. Learn where dashboards live, how alerts route, and whether you will join an on-call rotation."
+        },
+        {
+          "id": 48,
+          "question": "What is the tagging and cost-management standard?",
+          "answer": "Ask for the resource tagging policy — mandatory tags for cost center, environment, owner, and application — and whether FinOps reviews or cost optimization are part of your responsibilities."
+        },
+        {
+          "id": 49,
+          "question": "What is the disaster recovery and backup strategy?",
+          "answer": "Learn the RTO/RPO targets, backup tooling, cross-region strategy, and when DR exercises are run. Ask where the DR runbooks live and whether you will participate in the next test."
+        },
+        {
+          "id": 50,
+          "question": "Which certifications or skills does the team value most?",
+          "answer": "Cloud teams often encourage provider certifications (Solutions Architect, DevOps Professional), Kubernetes credentials (CKA), and Terraform Associate. Ask whether certification costs and study time are supported."
+        }
+      ]
+    },
+    {
+      "id": "scrum-master",
+      "role": "Scrum Master",
+      "title": "Role-Specific: Scrum Master / Agile Delivery",
+      "type": "role",
+      "questions": [
+        {
+          "id": 51,
+          "question": "Which teams will I be supporting, and what is their agile maturity?",
+          "answer": "Ask how many teams you will serve, how long they have practiced Scrum, and what their known dysfunctions are. A team new to agile needs teaching; a mature team needs coaching and impediment removal."
+        },
+        {
+          "id": 52,
+          "question": "What agile framework does the organization actually follow?",
+          "answer": "Many companies say Scrum but practice something hybrid, or operate under SAFe, LeSS, or Kanban. Ask what ceremonies exist today, what is mandated by the organization, and where teams have autonomy to adapt."
+        },
+        {
+          "id": 53,
+          "question": "What tools are used for backlog and sprint management?",
+          "answer": "Confirm whether the organization runs Jira, Azure DevOps, or another tool, and learn the current board configurations, workflow states, and reporting dashboards before proposing any changes."
+        },
+        {
+          "id": 54,
+          "question": "How are sprint metrics tracked, and which ones does leadership review?",
+          "answer": "Ask which metrics matter here — velocity, sprint burndown, cycle time, escaped defects, or predictability. Understand how metrics are used: for team improvement or for performance evaluation (the latter is a red flag worth navigating carefully)."
+        },
+        {
+          "id": 55,
+          "question": "What does the product owner relationship look like?",
+          "answer": "Identify the product owners for your teams and assess backlog health early: are stories refined, prioritized, and sized ahead of sprint planning? A weak PO relationship is the most common root cause of struggling teams."
+        },
+        {
+          "id": 56,
+          "question": "What are the current top impediments for my teams?",
+          "answer": "Ask each team directly in your first retrospectives, and ask your manager what organizational blockers persist — dependencies on other teams, environment availability, or approval bottlenecks are typical answers."
+        },
+        {
+          "id": 57,
+          "question": "How do cross-team dependencies get coordinated?",
+          "answer": "Learn whether there is a Scrum of Scrums, a release train, or informal coordination. Ask how dependencies are visualized and escalated when they threaten sprint commitments."
+        },
+        {
+          "id": 58,
+          "question": "What is the release and deployment cadence?",
+          "answer": "Understand how sprint output reaches production: continuous deployment, scheduled releases, or release windows. This shapes how you facilitate sprint planning and definition-of-done conversations."
+        },
+        {
+          "id": 59,
+          "question": "What authority does the Scrum Master role carry here?",
+          "answer": "Clarify whether the role is a facilitator, a delivery manager with reporting duties, or a coach with organizational change scope. Misaligned expectations about authority are a common source of frustration in this role."
+        },
+        {
+          "id": 60,
+          "question": "How is agile coaching and professional development supported?",
+          "answer": "Ask whether there is a community of practice for Scrum Masters, whether certifications (CSM, PSM, SAFe) are reimbursed, and who mentors agile practitioners in the organization."
+        }
+      ]
+    },
+    {
+      "id": "hr-professional-assistant",
+      "role": "HR Professional Assistant",
+      "title": "Role-Specific: HR Professional / HR Assistant",
+      "type": "role",
+      "questions": [
+        {
+          "id": 61,
+          "question": "Which HRIS and HR systems will I be working in?",
+          "answer": "Confirm the core HRIS (Workday, ADP, BambooHR, Paylocity) and surrounding tools for applicant tracking, benefits administration, and learning management. Request system training and appropriate role-based access on day one."
+        },
+        {
+          "id": 62,
+          "question": "What is my scope of access to confidential employee data?",
+          "answer": "HR roles carry elevated data responsibility. Clarify exactly which employee records you may access, the rules for handling compensation and medical information, and the consequences of confidentiality breaches. When in doubt, ask before accessing."
+        },
+        {
+          "id": 63,
+          "question": "Which HR processes will I own or support?",
+          "answer": "Get a clear list: onboarding coordination, benefits enrollment support, leave administration, HRIS data entry, employee file maintenance, or recruiting logistics. Ask for the standard operating procedures (SOPs) for each process you touch."
+        },
+        {
+          "id": 64,
+          "question": "What is the escalation path for sensitive employee issues?",
+          "answer": "Learn immediately which matters must be escalated and to whom: harassment complaints, accommodation requests, threats of violence, or legal inquiries. HR assistants should never handle these independently — know the intake and referral process."
+        },
+        {
+          "id": 65,
+          "question": "What employment laws and compliance requirements apply to my work?",
+          "answer": "Ask which regulations most affect your daily tasks — FMLA, ADA, FLSA, EEO reporting, I-9 verification, and state-specific requirements. Request compliance training relevant to your responsibilities within your first month."
+        },
+        {
+          "id": 66,
+          "question": "How is the employee onboarding process structured, and what is my role in it?",
+          "answer": "Map the end-to-end new hire journey: offer acceptance, background checks, day-one logistics, benefits enrollment, and 30-day check-ins. Identify exactly which steps you own and which handoffs you coordinate."
+        },
+        {
+          "id": 67,
+          "question": "What is the process for handling employee inquiries?",
+          "answer": "Learn how employee questions arrive (ticketing system, shared inbox, walk-ups), the expected response times, which answers you can give directly, and which require an HR business partner or manager."
+        },
+        {
+          "id": 68,
+          "question": "How are employee records and documents managed?",
+          "answer": "Ask about the document retention policy, what belongs in personnel files versus separate confidential files (medical, investigation records), and whether records are digital, paper, or both."
+        },
+        {
+          "id": 69,
+          "question": "What recurring HR calendar events should I know about?",
+          "answer": "Map the annual HR cycle: open enrollment, performance review windows, compensation cycles, compliance reporting deadlines (EEO-1, ACA), engagement surveys, and audit periods. These drive your busiest weeks."
+        },
+        {
+          "id": 70,
+          "question": "What professional development exists for HR careers here?",
+          "answer": "Ask whether the company supports SHRM-CP or PHR certification, whether there is a path from assistant to generalist to HR business partner, and who in the HR team can mentor your growth."
+        }
+      ]
+    },
+    {
+      "id": "compliance-engineer",
+      "role": "Compliance Engineer",
+      "title": "Role-Specific: Compliance Engineering",
+      "type": "role",
+      "questions": [
+        {
+          "id": 71,
+          "question": "Which compliance frameworks does the company operate under?",
+          "answer": "Confirm the applicable frameworks — SOC 2, ISO 27001, FedRAMP, NIST 800-53, HIPAA, PCI-DSS, or GDPR — and which are certified versus aspirational. Ask for the current control matrix and the date of the last audit."
+        },
+        {
+          "id": 72,
+          "question": "What is the compliance-as-code tooling in place?",
+          "answer": "Ask whether controls are enforced through policy-as-code (OPA/Gatekeeper, Sentinel, AWS Config rules, Azure Policy) and where the policy repositories live. Understand which controls are automated versus manually attested."
+        },
+        {
+          "id": 73,
+          "question": "How is compliance evidence collected and managed?",
+          "answer": "Learn whether evidence collection is automated through a GRC platform (Drata, Vanta, Hyperproof, ServiceNow GRC) or gathered manually. Ask what evidence your role is responsible for producing and on what cadence."
+        },
+        {
+          "id": 74,
+          "question": "What is the audit calendar, and what is my role in audits?",
+          "answer": "Get the schedule of external audits, internal audits, and continuous monitoring reviews. Clarify whether you will interface directly with auditors, prepare evidence packages, or remediate findings."
+        },
+        {
+          "id": 75,
+          "question": "How are compliance requirements integrated into the development lifecycle?",
+          "answer": "Ask where compliance gates exist in CI/CD: image scanning, dependency checks, infrastructure policy validation, and change approval controls. Understand how developers experience these gates and where friction exists."
+        },
+        {
+          "id": 76,
+          "question": "What is the vulnerability and finding remediation process?",
+          "answer": "Learn the severity classification, remediation SLAs per severity, the exception/risk-acceptance process, and who signs off on deviations. Ask what the current backlog of open findings looks like."
+        },
+        {
+          "id": 77,
+          "question": "How is access control governed and reviewed?",
+          "answer": "Ask about the access review cadence, the joiner-mover-leaver process, privileged access management tooling, and whether access certifications are automated. Access reviews are among the most audited controls."
+        },
+        {
+          "id": 78,
+          "question": "What security and compliance monitoring is in place?",
+          "answer": "Confirm the SIEM or monitoring stack, how compliance drift is detected (configuration drift, unauthorized changes), and how alerts route between security operations and compliance teams."
+        },
+        {
+          "id": 79,
+          "question": "Who are the key stakeholders I will work with?",
+          "answer": "Identify the security team, legal counsel, internal audit, platform engineering, and the external auditors. Compliance engineering sits at the intersection of these groups — schedule intro conversations with each early."
+        },
+        {
+          "id": 80,
+          "question": "Which certifications or skills does the team value for this role?",
+          "answer": "Common valued credentials include CISA, CISSP, CompTIA Security+, AWS Security Specialty, and familiarity with GRC platforms. Ask whether certification costs are reimbursed and what skill gaps the team wants filled."
+        }
+      ]
+    }
+  ]
+}

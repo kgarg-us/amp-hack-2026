@@ -14,6 +14,7 @@ export default [
       ecmaVersion: 2022,
       sourceType: "module",
       globals: {
+        clearTimeout: "readonly",
         crypto: "readonly",
         document: "readonly",
         import: "readonly",

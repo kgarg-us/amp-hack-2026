@@ -8,10 +8,13 @@ BACKEND_ROOT = Path(__file__).resolve().parent.parent
 
 class Settings(BaseSettings):
     app_name: str = "Ampcus Hackathon: New-Hire Onboarding API"
-    frontend_origin: str = "http://localhost:3000"
+    # Comma-separated list of allowed browser origins (Vite dev server is 5173).
+    frontend_origin: str = "http://localhost:5173,http://localhost:3000"
     openai_api_key: str
     openai_model: str = "gpt-4.1-mini"
+    openai_embedding_model: str = "text-embedding-3-small"
     faq_pdf_path: Path = BACKEND_ROOT / "New_Hire_FAQ_Questions.pdf"
+    faq_data_path: Path = BACKEND_ROOT / "faq_data.json"
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 

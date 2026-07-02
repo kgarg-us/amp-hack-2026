@@ -1,0 +1,201 @@
+{
+  "meta": {
+    "title": "New Hire 3-Week Onboarding Plan",
+    "version": "1.0",
+    "generated": "2026-07-02"
+  },
+  "weeks": [
+    {
+      "id": "week-1",
+      "weekNumber": 1,
+      "title": "Week 1 — Foundation & Setup",
+      "theme": "Get operational, meet your immediate circle, and absorb context. No pressure to produce yet.",
+      "goals": [
+        "Fully working laptop, accounts, and tool access",
+        "Know your team members and your onboarding buddy",
+        "Understand what your team does and why it matters"
+      ],
+      "days": [
+        {
+          "label": "Day 1",
+          "activities": "Complete IT setup: laptop enrollment, VPN, email, Slack/Teams, and password manager. Meet your manager to review your schedule and 30-60-90 plan. Complete day-one compliance training."
+        },
+        {
+          "label": "Day 2",
+          "activities": "Set up direct deposit and begin benefits enrollment. Meet your onboarding buddy. Request access to the systems your role needs (submit tickets early — approvals take time). Read the employee handbook."
+        },
+        {
+          "label": "Day 3",
+          "activities": "Attend your first team meeting as a listener. Read your team's charter, roadmap, and recent status updates. Start a personal onboarding notes document — capture every acronym, name, and system you encounter."
+        },
+        {
+          "label": "Day 4",
+          "activities": "Hold your first 1:1 with your manager: clarify what to own vs. escalate, communication preferences, and what success looks like at 30/60/90 days. Set up a recurring 1:1 slot."
+        },
+        {
+          "label": "Day 5",
+          "activities": "Complete remaining required training modules. Review your access requests and chase any that are stuck. Recap the week with your buddy: what surprised you, what is still unclear."
+        }
+      ],
+      "checklist": [
+        {
+          "id": "w1-c1",
+          "item": "Laptop, VPN, email, and chat fully working",
+          "done": false
+        },
+        {
+          "id": "w1-c2",
+          "item": "Benefits enrollment started (30-day deadline)",
+          "done": false
+        },
+        {
+          "id": "w1-c3",
+          "item": "Direct deposit configured",
+          "done": false
+        },
+        {
+          "id": "w1-c4",
+          "item": "Recurring 1:1 with manager on the calendar",
+          "done": false
+        },
+        {
+          "id": "w1-c5",
+          "item": "All system access requests submitted",
+          "done": false
+        },
+        {
+          "id": "w1-c6",
+          "item": "Compliance training completed",
+          "done": false
+        },
+        {
+          "id": "w1-c7",
+          "item": "Onboarding notes document started",
+          "done": false
+        }
+      ]
+    },
+    {
+      "id": "week-2",
+      "weekNumber": 2,
+      "title": "Week 2 — People & Process",
+      "theme": "Expand your network beyond the team, learn how work actually flows, and go deeper on the tools and systems of your role.",
+      "goals": [
+        "Meet 5-8 key stakeholders outside your immediate team",
+        "Understand the end-to-end workflow your team operates in",
+        "Navigate the core tools of your role confidently"
+      ],
+      "days": [
+        {
+          "label": "Day 6-7",
+          "activities": "Schedule 25-minute intro 1:1s with the stakeholders your manager identified. Ask each: what does your team do, how do we work together, and what makes collaboration easy or hard?"
+        },
+        {
+          "label": "Day 8",
+          "activities": "Shadow a teammate through a full task cycle — from ticket pickup to completion. Note every tool, approval, and handoff involved. This reveals the real process, not the documented one."
+        },
+        {
+          "label": "Day 9",
+          "activities": "Deep-dive the role-specific systems: repositories, pipelines, HRIS, boards, or compliance platforms depending on your role. Follow the runbooks or SOPs and flag anything outdated."
+        },
+        {
+          "label": "Day 10",
+          "activities": "Attend all recurring team ceremonies this week (standup, planning, refinement, or staff meetings). Begin contributing small observations or questions. Check in with your manager on ramp-up pace."
+        }
+      ],
+      "checklist": [
+        {
+          "id": "w2-c1",
+          "item": "5+ stakeholder intro meetings completed",
+          "done": false
+        },
+        {
+          "id": "w2-c2",
+          "item": "One full workflow shadowed end to end",
+          "done": false
+        },
+        {
+          "id": "w2-c3",
+          "item": "Core role tools accessed and explored",
+          "done": false
+        },
+        {
+          "id": "w2-c4",
+          "item": "At least one outdated doc or gap flagged",
+          "done": false
+        },
+        {
+          "id": "w2-c5",
+          "item": "All team ceremonies attended",
+          "done": false
+        },
+        {
+          "id": "w2-c6",
+          "item": "Benefits enrollment finished or on track",
+          "done": false
+        }
+      ]
+    },
+    {
+      "id": "week-3",
+      "weekNumber": 3,
+      "title": "Week 3 — First Contributions",
+      "theme": "Shift from absorbing to producing. Deliver something small but real, and validate your understanding against reality.",
+      "goals": [
+        "Complete your first real task or deliverable",
+        "Give and receive first feedback",
+        "Confirm alignment on expectations at the ~15-20 day mark"
+      ],
+      "days": [
+        {
+          "label": "Day 11-12",
+          "activities": "Pick up your first starter task — a small, well-scoped item your manager or lead suggests. The goal is to exercise the full workflow (do the work, get it reviewed, ship it), not to impress with size."
+        },
+        {
+          "label": "Day 13",
+          "activities": "Ask for feedback on your first deliverable explicitly: what would you have done differently? Update the onboarding documentation with everything you found missing or unclear — a high-value early contribution."
+        },
+        {
+          "label": "Day 14",
+          "activities": "Hold a check-in with your manager: review your 30-60-90 goals against your first two weeks, surface anything about the role that differs from expectations, and agree on week 4+ priorities."
+        },
+        {
+          "label": "Day 15",
+          "activities": "Close out the onboarding sprint: confirm all access is granted, all training is done, and your notes document is organized. Identify one process improvement or gap you can own as a stretch item in your first 60 days."
+        }
+      ],
+      "checklist": [
+        {
+          "id": "w3-c1",
+          "item": "First task completed, reviewed, and delivered",
+          "done": false
+        },
+        {
+          "id": "w3-c2",
+          "item": "Feedback requested and received",
+          "done": false
+        },
+        {
+          "id": "w3-c3",
+          "item": "Onboarding docs improved with your findings",
+          "done": false
+        },
+        {
+          "id": "w3-c4",
+          "item": "15-20 day expectation check-in held with manager",
+          "done": false
+        },
+        {
+          "id": "w3-c5",
+          "item": "All access and training fully complete",
+          "done": false
+        },
+        {
+          "id": "w3-c6",
+          "item": "Week 4+ priorities agreed with manager",
+          "done": false
+        }
+      ]
+    }
+  ]
+}

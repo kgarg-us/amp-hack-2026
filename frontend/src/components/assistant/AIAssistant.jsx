@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Bot, Loader2, Send, UserRound } from "lucide-react";
 import { motion } from "framer-motion";
-import { askQuestion, getFAQs } from "../../services/api";
+import { askQuestion, getFAQs, searchFAQs } from "../../services/api";
 
 const initialMessages = [
   {
@@ -14,6 +14,7 @@ const initialMessages = [
 export default function AIAssistant() {
   const [messages, setMessages] = useState(initialMessages);
   const [faqs, setFaqs] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
   const [input, setInput] = useState("");
   const [isReplying, setIsReplying] = useState(false);
   const [error, setError] = useState("");
@@ -22,6 +23,27 @@ export default function AIAssistant() {
   useEffect(() => {
     getFAQs().then(setFaqs);
   }, []);
+
+  // Semantic search: as the user types, surface related FAQ questions (by
+  // meaning, not keywords). Debounced; falls back silently to the default chips.
+  useEffect(() => {
+    const trimmed = input.trim();
+    if (trimmed.length < 2) {
+      setSuggestions([]);
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      searchFAQs(trimmed, 5).then((hits) =>
+        setSuggestions(hits.map((hit) => hit.question))
+      );
+    }, 250);
+
+    return () => clearTimeout(timer);
+  }, [input]);
+
+  // Show semantic matches while typing, otherwise the default suggestion chips.
+  const chips = suggestions.length > 0 ? suggestions : faqs;
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -85,8 +107,13 @@ export default function AIAssistant() {
         </div>
       </div>
 
+      {suggestions.length > 0 ? (
+        <p className="mb-2 text-xs font-bold uppercase tracking-wide text-slate-400">
+          Related questions
+        </p>
+      ) : null}
       <div className="mb-4 flex flex-wrap gap-2">
-        {faqs.map((faq) => (
+        {chips.map((faq) => (
           <button
             key={faq}
             type="button"
