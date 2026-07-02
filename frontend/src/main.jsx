@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AppLayout from "./components/layout/AppLayout";
 import Dashboard from "./pages/Dashboard";
+import Faq from "./pages/Faq";
 import Home from "./pages/Home";
 import "./styles/index.css";
 
@@ -12,6 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Routes>
         <Route element={<AppLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/faq" element={<Faq />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Route>
       </Routes>

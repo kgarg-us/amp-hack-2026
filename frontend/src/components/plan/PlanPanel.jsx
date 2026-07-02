@@ -2,7 +2,7 @@ import { Loader2, RefreshCw, WandSparkles } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import DayCard from "./DayCard";
 
-export default function PlanPanel({ plan, profile, isGenerating, error, profileChanged, onRegenerate }) {
+export default function PlanPanel({ plan, profile, isGenerating, error, notice, profileChanged, onRegenerate }) {
   return (
     <motion.section
       initial={{ opacity: 0, y: 12 }}
@@ -43,6 +43,12 @@ export default function PlanPanel({ plan, profile, isGenerating, error, profileC
         </div>
       ) : null}
 
+      {notice ? (
+        <div className="mb-5 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-800">
+          {notice}
+        </div>
+      ) : null}
+
       <AnimatePresence mode="wait">
         {isGenerating ? (
           <motion.div
@@ -55,7 +61,7 @@ export default function PlanPanel({ plan, profile, isGenerating, error, profileC
             <div>
               <Loader2 className="mx-auto mb-4 animate-spin text-ocean" size={34} />
               <p className="font-bold text-ink">Generating a personalized first week...</p>
-              <p className="mt-1 text-sm text-slate-500">Mock API response is preparing the plan.</p>
+              <p className="mt-1 text-sm text-slate-500">Building your Monday–Friday plan.</p>
             </div>
           </motion.div>
         ) : plan.length > 0 ? (

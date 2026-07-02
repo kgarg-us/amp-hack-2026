@@ -8,7 +8,7 @@ const initialMessages = [
   {
     id: "welcome",
     role: "assistant",
-    text: "Hi, I can help with onboarding questions about leave, policies, access, and team logistics.",
+    text: "Hi, I'm J.A.R.V.I.S. Ask me anything about onboarding — leave, benefits, IT access, policies, or your team — and I'll answer from the new-hire FAQ.",
   },
 ];
 

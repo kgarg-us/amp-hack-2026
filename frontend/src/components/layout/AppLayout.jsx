@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { Bot, LayoutDashboard } from "lucide-react";
+import { HelpCircle, LayoutDashboard } from "lucide-react";
+import ampcusMark from "../../assets/ampcus-mark.jpeg";
 
 export default function AppLayout() {
   const navLinkClass = ({ isActive }) =>
@@ -12,18 +13,24 @@ export default function AppLayout() {
       <header className="sticky top-0 z-20 border-b border-white/70 bg-mist/85 backdrop-blur">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <NavLink to="/" className="inline-flex items-center gap-3 font-bold text-ink">
-            <span className="grid h-10 w-10 place-items-center rounded-lg bg-ocean text-white shadow-card">
-              <Bot size={21} />
-            </span>
+            <img
+              src={ampcusMark}
+              alt="Ampcus"
+              className="h-10 w-10 rounded-lg object-cover shadow-card"
+            />
             <span className="leading-tight">
-              OnboardAI
-              <span className="block text-xs font-medium text-slate-500">Employee Companion</span>
+              J.A.R.V.I.S.
+              <span className="block text-xs font-medium text-slate-500">by Ampcus</span>
             </span>
           </NavLink>
 
           <div className="flex items-center gap-2">
-            <NavLink to="/" className={navLinkClass}>
+            <NavLink to="/" end className={navLinkClass}>
               Home
+            </NavLink>
+            <NavLink to="/faq" className={navLinkClass}>
+              <HelpCircle size={16} />
+              FAQ
             </NavLink>
             <NavLink to="/dashboard" className={navLinkClass}>
               <LayoutDashboard size={16} />

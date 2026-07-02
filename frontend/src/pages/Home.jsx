@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, MessageSquareText, Sparkles } from "lucide-react";
+import ampcusLogo from "../assets/ampcus-logo.webp";
 
 const highlights = [
   "Personalized first-week plans",
-  "Built-in onboarding assistant",
-  "Ready for FastAPI integration",
+  "Instant answers to 50+ FAQs",
+  "Ask in your own words",
 ];
 
 export default function Home() {
@@ -17,15 +18,16 @@ export default function Home() {
         transition={{ duration: 0.45 }}
         className="flex flex-col justify-center"
       >
+        <img src={ampcusLogo} alt="Ampcus" className="mb-6 h-8 w-auto" />
         <span className="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-ocean shadow-card">
           <Sparkles size={16} />
-          AI Employee Onboarding Companion
+          J.A.R.V.I.S. · AI Onboarding Companion
         </span>
         <h1 className="max-w-3xl text-4xl font-black leading-tight tracking-normal text-ink sm:text-5xl lg:text-6xl">
           Help every new teammate feel ready before week two.
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-          OnboardAI turns a new hire profile into a focused first-week plan and gives employees a friendly assistant for common questions, policies, access, and team rituals.
+          J.A.R.V.I.S. — the Joining Assistant for Roles, Verification, Information, &amp; Scheduling — turns a new hire profile into a focused first-week plan and answers common onboarding questions instantly.
         </p>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -82,7 +84,7 @@ export default function Home() {
                 <MessageSquareText size={20} />
               </span>
               <div>
-                <p className="font-bold text-ink">AI Assistant</p>
+                <p className="font-bold text-ink">J.A.R.V.I.S.</p>
                 <p className="text-sm text-slate-500">Ask about leave, policies, IT, and more.</p>
               </div>
             </div>
