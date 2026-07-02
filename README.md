@@ -6,6 +6,7 @@ Full-stack starter with:
 - `backend/`: Python FastAPI API with automatic OpenAPI and Swagger docs.
 - OpenAI integration on the backend using a pre-configured model from environment variables.
 - New-hire onboarding assistant: `/api/generate` grounds every answer in `backend/New_Hire_FAQ_Questions.pdf` (parsed once and cached) and returns a concise, summarized response — including structured first-week plans when asked (e.g. "generate a first-week plan for Alex, a Backend Engineer").
+- FAQ-Assistant: `/api/faq` searches the FAQ data source for the FAQ chat companion
 
 ## Project Structure
 
@@ -55,8 +56,8 @@ API docs:
 ```powershell
 cd frontend
 npm install
-Copy-Item .env.example .env.local
+Copy-Item .env.example .env
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Open `http://localhost:5173`.
