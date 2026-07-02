@@ -8,19 +8,14 @@ from openai import (
 )
 
 from app.config import Settings, get_settings
-from app.faq_index import get_faq_index, group_by_category, load_faq_items
-from app.schemas import (
-    FaqResponse,
-    PromptRequest,
-    PromptResponse,
-    SearchRequest,
-    SearchResponse,
-)
+from app.faq_context import load_faq_context
+from app.faq_index import group_by_category, load_faq_items
+from app.schemas import FaqResponse, PromptRequest, PromptResponse
 
 app = FastAPI(
     title=get_settings().app_name,
-    description="Backend API for the new-hire onboarding FAQ assistant.",
-    version="0.2.0",
+    description="Backend API for the new-hire onboarding assistant.",
+    version="0.3.0",
 )
 
 app.add_middleware(
@@ -36,14 +31,14 @@ app.add_middleware(
 )
 
 SYSTEM_INSTRUCTIONS = """You are the onboarding assistant for new hires.
-Answer using the retrieved New-Hire FAQ entries below whenever they are \
-relevant; if the question isn't covered, answer from general onboarding best \
+Answer using the New-Hire FAQ context below whenever it's relevant; if the \
+question isn't covered by the context, answer from general onboarding best \
 practices instead of refusing. Keep responses concise and summarized \
 (prefer short paragraphs or bullet points over long prose). If asked for a \
-structured plan (e.g. a first-week plan for a given person/role), format the \
-answer as a clear day-by-day or section-by-section structure.
+structured plan (e.g. a first-week plan for a given person/role), format \
+the answer as a clear day-by-day or section-by-section structure.
 
-Retrieved New-Hire FAQ entries:
+New-Hire FAQ context:
 {context}
 """
 
@@ -75,56 +70,31 @@ def health() -> dict[str, str]:
 
 @app.get("/api/faq", response_model=FaqResponse, tags=["faq"])
 def list_faq(settings: Settings = Depends(get_settings)) -> FaqResponse:
+    """Return the 50 structured FAQ entries grouped by category. The frontend
+    searches these locally (no LLM) to find and answer questions."""
     items = load_faq_items(settings.faq_data_path)
     return FaqResponse(categories=group_by_category(items), total=len(items))
 
 
-@app.post("/api/search", response_model=SearchResponse, tags=["faq"])
-def search(
-    request: SearchRequest,
-    settings: Settings = Depends(get_settings),
-) -> SearchResponse:
-    client = _client(settings)
-    try:
-        index = get_faq_index(
-            client, settings.openai_embedding_model, settings.faq_data_path
-        )
-        hits = index.search(
-            client, settings.openai_embedding_model, request.query, request.limit
-        )
-    except OpenAIError as exc:
-        raise _openai_http_error(exc) from exc
-
-    return SearchResponse(query=request.query, hits=hits)
-
-
-@app.post("/api/generate", response_model=PromptResponse, tags=["faq"])
+@app.post("/api/generate", response_model=PromptResponse, tags=["openai"])
 def generate(
     request: PromptRequest,
     settings: Settings = Depends(get_settings),
 ) -> PromptResponse:
+    """LLM endpoint used to generate the personalized first-week plan."""
     client = _client(settings)
 
     try:
-        index = get_faq_index(
-            client, settings.openai_embedding_model, settings.faq_data_path
-        )
-        retrieved = index.search(
-            client, settings.openai_embedding_model, request.prompt, limit=6
-        )
-    except OpenAIError as exc:
-        raise _openai_http_error(exc) from exc
-
-    context = "\n\n".join(
-        f"[FAQ #{hit['id']}] ({hit['category']})\n"
-        f"Q: {hit['question']}\nA: {hit['answer']}"
-        for hit in retrieved
-    )
+        faq_context = load_faq_context(settings.faq_pdf_path)
+    except FileNotFoundError as exc:
+        raise HTTPException(
+            status_code=500, detail="New-hire FAQ PDF is not available"
+        ) from exc
 
     try:
         response = client.responses.create(
             model=settings.openai_model,
-            instructions=SYSTEM_INSTRUCTIONS.format(context=context),
+            instructions=SYSTEM_INSTRUCTIONS.format(context=faq_context),
             input=request.prompt,
         )
     except OpenAIError as exc:
@@ -133,5 +103,4 @@ def generate(
     return PromptResponse(
         model=settings.openai_model,
         output_text=response.output_text,
-        sources=[hit["id"] for hit in retrieved],
     )

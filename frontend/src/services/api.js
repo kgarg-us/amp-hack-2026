@@ -1,5 +1,6 @@
 import axios from "axios";
 import { faqs } from "../data/mockData";
+import { normalizeWhitespace } from "../utils/text";
 
 const apiClient = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:8000",
@@ -34,31 +35,84 @@ export async function askQuestion(question) {
   };
 }
 
-// Default suggestion chips: pull real questions from the backend FAQ (one per
-// category to stay compact), falling back to the mock list if the API is down.
-export async function getFAQs() {
+// Load the full FAQ ({ id, category, question, answer }) from the backend so the
+// UI can search it locally. Falls back to the mock questions if the API is down.
+export async function getAllFAQs() {
   try {
     const response = await apiClient.get("/api/faq");
     const categories = response.data.categories || [];
-    const questions = categories
-      .map((category) => category.items?.[0]?.question)
-      .filter(Boolean);
-    return questions.length > 0 ? questions : faqs;
+    const items = categories.flatMap((category) =>
+      (category.items || []).map((item) => ({
+        id: item.id,
+        category: category.category,
+        question: item.question,
+        answer: item.answer,
+      }))
+    );
+    if (items.length > 0) return items;
   } catch {
-    return faqs;
+    // fall through to the mock list below
   }
+  return faqs.map((question, index) => ({
+    id: index,
+    category: "",
+    question,
+    answer: "",
+  }));
 }
 
-// Semantic search over the FAQ: returns ranked hits
-// [{ id, category, question, answer, score }]. Understands meaning/synonyms,
-// not just keywords. Returns [] on any failure so the UI can fall back quietly.
-export async function searchFAQs(query, limit = 5) {
-  try {
-    const response = await apiClient.post("/api/search", { query, limit });
-    return response.data.hits || [];
-  } catch {
-    return [];
-  }
+// Common words that carry little meaning for matching (incl. FAQ question words).
+const STOPWORDS = new Set([
+  "the", "and", "for", "are", "can", "you", "your", "that", "this", "with",
+  "how", "what", "when", "who", "where", "does", "did", "from", "into", "out",
+  "have", "has", "had", "will", "would", "should", "about", "an", "my", "me",
+  "is", "it", "to", "of", "do", "in", "on", "or", "as", "at", "be", "a", "i",
+]);
+
+function tokenize(text) {
+  return (text.toLowerCase().match(/[a-z0-9]+/g) || []).filter(
+    (token) => token.length > 1 && !STOPWORDS.has(token)
+  );
+}
+
+// Local, no-LLM ranking over the FAQ items. Scores whole-word overlap across the
+// question (weighted highest), category, and answer — with a longer-term
+// substring fallback and a phrase-match boost — so related topics surface
+// without a network/LLM call. Whole-word matching avoids false hits like
+// "off" matching "offer".
+export function rankFAQs(query, items, limit = 5) {
+  const cleanQuery = normalizeWhitespace(query);
+  const terms = [...new Set(tokenize(cleanQuery))];
+  if (terms.length === 0) return [];
+
+  const phrase = cleanQuery.toLowerCase();
+
+  return items
+    .map((item) => {
+      const questionWords = new Set(tokenize(item.question));
+      const categoryWords = new Set(tokenize(item.category || ""));
+      const answerWords = new Set(tokenize(item.answer || ""));
+      const questionText = item.question.toLowerCase();
+      const answerText = (item.answer || "").toLowerCase();
+
+      let score = 0;
+      for (const term of terms) {
+        if (questionWords.has(term)) score += 3;
+        else if (term.length >= 5 && questionText.includes(term)) score += 1.5;
+
+        if (categoryWords.has(term)) score += 2;
+
+        if (answerWords.has(term)) score += 1;
+        else if (term.length >= 5 && answerText.includes(term)) score += 0.5;
+      }
+      if (phrase.length > 2 && questionText.includes(phrase)) score += 4;
+
+      return { item, score };
+    })
+    .filter((entry) => entry.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map((entry) => entry.item);
 }
 
 function buildPlanPrompt(profile) {
@@ -66,11 +120,11 @@ function buildPlanPrompt(profile) {
 You are an AI Employee Onboarding Companion.
 Create a personalized first-week onboarding plan for this employee:
 
-Name: ${profile.name}
-Role: ${profile.role}
-Team: ${profile.team}
-Start Date: ${profile.startDate}
-Skills: ${profile.skills}
+Name: ${normalizeWhitespace(profile.name)}
+Role: ${normalizeWhitespace(profile.role)}
+Team: ${normalizeWhitespace(profile.team)}
+Start Date: ${normalizeWhitespace(profile.startDate)}
+Skills: ${normalizeWhitespace(profile.skills)}
 
 Return ONLY valid JSON. Do not include markdown fences or prose.
 The JSON must be an array of exactly five objects for Monday through Friday.

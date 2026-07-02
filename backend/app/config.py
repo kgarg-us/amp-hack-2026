@@ -12,7 +12,6 @@ class Settings(BaseSettings):
     frontend_origin: str = "http://localhost:5173,http://localhost:3000"
     openai_api_key: str
     openai_model: str = "gpt-4.1-mini"
-    openai_embedding_model: str = "text-embedding-3-small"
     faq_pdf_path: Path = BACKEND_ROOT / "New_Hire_FAQ_Questions.pdf"
     faq_data_path: Path = BACKEND_ROOT / "faq_data.json"
 
