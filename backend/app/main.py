@@ -63,7 +63,7 @@ def _openai_http_error(exc: OpenAIError) -> HTTPException:
     return HTTPException(status_code=502, detail="OpenAI request failed.")
 
 
-@app.get("/health", tags=["system"])
+@app.get("/api/health", tags=["system"])
 def health() -> dict[str, str]:
     return {"status": "ok"}
 
